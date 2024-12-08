@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follow Instagram Rizky Ahmed Darmawan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #FBFBFB;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #1171B1;
+            text-align: center;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1171B1;
+            margin-bottom: 10px;
+            animation: slideIn 2s ease-in-out;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #1171B1;
+            margin-bottom: 20px;
+            animation: slideIn 2.5s ease-in-out;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .btn {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FCC102;
+            color: #FBFBFB;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #02DF4C;
+        }
+
+        .translation-btn {
+            background-color: #02DF4C;
+            color: #FBFBFB;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .translation-btn:hover {
+            background-color: #FCC102;
+        }
+
+        .footer {
+            margin-top: auto;
+            font-size: 12px;
+            color: rgba(17, 113, 177, 0.7);
+            text-align: center;
+            width: 100%;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+        }
+
+        .footer a {
+            color: rgba(17, 113, 177, 0.8);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Selamat Datang!</h1>
+        <h2>Follow Instagram Saya</h2>
+        <p>
+            Halo! Saya Rizky Ahmed Darmawan. Saya ingin mengundang Anda untuk mengikuti akun Instagram saya. Jika Anda setuju, 
+            klik tombol di bawah ini untuk diarahkan ke profil saya. Terima kasih atas dukungannya!
+        </p>
+        <button class="btn" onclick="getConsent()">Klik untuk Follow</button>
+        <button class="translation-btn" onclick="translateToEnglish()">Translate to English</button>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Rizky Ahmed Darmawan. All rights reserved.</p>
+    </div>
+
+    <script>
+        // Variabel untuk menentukan bahasa dialog
+        let dialogLanguage = "id";
+
+        function getConsent() {
+            // Teks dialog berdasarkan bahasa yang dipilih
+            const consentMessage = dialogLanguage === "id"
+                ? "Dengan mengklik OK, Anda akan diarahkan ke profil Instagram saya. Silakan klik tombol 'Follow' di Instagram."
+                : "By clicking OK, you will be redirected to my Instagram profile. Please click the 'Follow' button on Instagram.";
+            
+            const consent = confirm(consentMessage);
+            if (consent) {
+                window.open("https://www.instagram.com/rizky_ahmed_darmawan/", "_blank");
+            } else {
+                alert(dialogLanguage === "id"
+                    ? "Tidak masalah! Terima kasih sudah mengunjungi halaman ini."
+                    : "No problem! Thank you for visiting this page.");
+            }
+        }
+
+        function translateToEnglish() {
+            // Mengubah teks di halaman ke bahasa Inggris
+            document.querySelector('h1').innerText = "Welcome!";
+            document.querySelector('h2').innerText = "Follow My Instagram";
+            document.querySelector('p').innerText = "Hello! I am Rizky Ahmed Darmawan. I would like to invite you to follow my Instagram account. If you agree, click the button below to visit my profile. Thank you for your support!";
+            document.querySelector('.btn').innerText = "Click to Follow";
+            document.querySelector('.translation-btn').innerText = "Kembali ke Bahasa Indonesia";
+            document.querySelector('.translation-btn').setAttribute("onclick", "translateToIndonesian()");
+            dialogLanguage = "en"; // Ubah bahasa dialog ke Inggris
+        }
+
+        function translateToIndonesian() {
+            // Mengembalikan teks ke bahasa Indonesia
+            document.querySelector('h1').innerText = "Selamat Datang!";
+            document.querySelector('h2').innerText = "Follow Instagram Saya";
+            document.querySelector('p').innerText = "Halo! Saya Rizky Ahmed Darmawan. Saya ingin mengundang Anda untuk mengikuti akun Instagram saya. Jika Anda setuju, klik tombol di bawah ini untuk diarahkan ke profil saya. Terima kasih atas dukungannya!";
+            document.querySelector('.btn').innerText = "Klik untuk Follow";
+            document.querySelector('.translation-btn').innerText = "Translate to English";
+            document.querySelector('.translation-btn').setAttribute("onclick", "translateToEnglish()");
+            dialogLanguage = "id"; // Ubah bahasa dialog ke Indonesia
+        }
+    </script>
+</body>
+</html>
+
